@@ -65,3 +65,118 @@ The `external-services` folder contains modules related to integrating with exte
 ### Configuration
 
 The `configuration` folder (or `config`) may hold configuration files or modules related to the data source layer. This includes database connection configuration, external service credentials, or any other configuration required for the data access and integration aspects of the application.
+
+## File Tree
+
+```
+src                                                             
+└─ main                                                         
+   ├─ java                                                      
+   │  └─ com                                                    
+   │     └─ fbaron                                              
+   │        └─ cvmanager                                        
+   │           ├─ common                                        
+   │           │  ├─ exception                                  
+   │           │  │  ├─ ResourceNotFoundException.java          
+   │           │  │  └─ ServiceErrorHandler.java                
+   │           │  └─ rest                                       
+   │           │     └─ RestTemplateBean.java                   
+   │           ├─ profile                                       
+   │           │  ├─ core                                       
+   │           │  │  ├─ domain                                  
+   │           │  │  │  ├─ model                                
+   │           │  │  │  │  ├─ Education.java                    
+   │           │  │  │  │  ├─ PersonalInformation.java          
+   │           │  │  │  │  ├─ Profile.java                      
+   │           │  │  │  │  ├─ Skill.java                        
+   │           │  │  │  │  └─ WorkExperience.java               
+   │           │  │  │  ├─ DomainCreateProfileService.java      
+   │           │  │  │  ├─ DomainGetAllProfilesService.java     
+   │           │  │  │  ├─ DomainGetProfileByIdService.java     
+   │           │  │  │  └─ DomainUpdateProfileService.java      
+   │           │  │  ├─ interactors                             
+   │           │  │  │  ├─ CreateProfileService.java            
+   │           │  │  │  ├─ GetAllProfilesService.java           
+   │           │  │  │  ├─ GetProfileByIdService.java           
+   │           │  │  │  └─ UpdateProfileService.java            
+   │           │  │  └─ repositories                            
+   │           │  │     ├─ CreateProfileRepository.java         
+   │           │  │     ├─ FindAllProfilesRepository.java       
+   │           │  │     ├─ FindProfileByIdRepository.java       
+   │           │  │     └─ UpdateProfileRepository.java         
+   │           │  ├─ data                                       
+   │           │  │  ├─ config                                  
+   │           │  │  │  └─ ProfileConfig.java                   
+   │           │  │  ├─ jpa                                     
+   │           │  │  │  ├─ entity                               
+   │           │  │  │  │  └─ ProfileEntity.java                
+   │           │  │  │  ├─ mapper                               
+   │           │  │  │  │  └─ ProfileJpaMapper.java             
+   │           │  │  │  ├─ repository                           
+   │           │  │  │  │  └─ ProfileJpaRepository.java         
+   │           │  │  │  └─ ProfileJpaAdapter.java               
+   │           │  │  └─ mongo                                   
+   │           │  │     ├─ document                             
+   │           │  │     │  ├─ Education.java                    
+   │           │  │     │  ├─ PersonalInformation.java          
+   │           │  │     │  ├─ ProfileDocument.java              
+   │           │  │     │  ├─ Skill.java                        
+   │           │  │     │  └─ WorkExperience.java               
+   │           │  │     ├─ mapper                               
+   │           │  │     │  └─ ProfileMongodbMapper.java         
+   │           │  │     ├─ repository                           
+   │           │  │     │  └─ ProfileMongodbRepository.java     
+   │           │  │     └─ ProfileMongodbAdapter.java           
+   │           │  └─ transport                                  
+   │           │     └─ rest                                    
+   │           │        ├─ controller                           
+   │           │        │  └─ ProfileRestController.java        
+   │           │        ├─ dto                                  
+   │           │        │  ├─ CreateProfileDTO.java             
+   │           │        │  ├─ EducationDTO.java                 
+   │           │        │  ├─ PersonalInformationDTO.java       
+   │           │        │  ├─ ProfileDTO.java                   
+   │           │        │  ├─ SkillDTO.java                     
+   │           │        │  ├─ UpdateProfileDTO.java             
+   │           │        │  └─ WorkExperienceDTO.java            
+   │           │        └─ mapper                               
+   │           │           └─ ProfileDtoMapper.java             
+   │           └─ Application.java                              
+   └─ resources                                                 
+      ├─ application.yaml                                       
+      ├─ banner.txt                                             
+      └─ env.yaml                                   
+```
+
+### What You Need
+
+-[Java SE Development Kit 17.0.6](https://download.oracle.com/java/17/archive/jdk-17.0.6_windows-x64_bin.msi) - The software that provides development tools for creating Java programs.
+
+-[Postman](https://www.postman.com/downloads/) - It is an application that allows us to perform API testing.
+
+-[Git](https://gitforwindows.org/) -  It is a distributed version control system.
+
+-[IntelliJ IDEA Community Edition](https://download-cdn.jetbrains.com/idea/ideaIC-2023.1.2.exe) -  The IDE for pure Java and Kotlin development.
+
+### Clone the GitHub repository from the terminal or Git Bash.
+
+```bash
+git clone https://github.com/ferneybaron/cv-manager-backend.git
+```
+
+### Build the Application
+
+```bash
+./gradlew build
+```
+
+### Run the Application
+```bash
+./gradlew bootRun
+```
+
+### OpenAPI definition
+```bash
+http://localhost:8080/cv-manager/swagger-ui/index.html
+```
+This folder architecture promotes separation of concerns, allowing for a clear distinction between the application's core functionality and the data persistence and external service integration aspects.
