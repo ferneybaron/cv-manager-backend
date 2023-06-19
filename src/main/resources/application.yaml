@@ -1,0 +1,50 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /cv-manager
+
+spring:
+
+  config:
+    import: classpath:env.yaml
+
+  application:
+    title: ${env.application.title}
+    version: ${env.application.version}
+
+  datasource:
+    username: ${env.datasource.username}
+    password: ${env.datasource.password}
+    url: ${env.datasource.url}
+    driverClassName: ${env.datasource.driverClassName}
+    # Connection pool properties (optional)
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 5
+
+  jpa:
+    database-platform: ${env.jpa.databasePlatform}
+    hibernate:
+      ddl-auto: ${env.jpa.hibernate.ddlAuto}
+    show-sql: ${env.jpa.showSql}
+    properties:
+      hibernate:
+        format_sql: ${env.jpa.properties.hibernate.formatSql}
+    defer-datasource-initialization: true
+
+  data:
+    mongodb:
+      uri: ${env.data.mongodb.uri}
+
+# /api-docs endpoint custom path
+springdoc:
+  api-docs:
+    path: /api-docs
+  show-actuator: true
+management:
+  endpoint:
+    health:
+      group:
+        custom:
+          show-components: always
+          show-details: always
