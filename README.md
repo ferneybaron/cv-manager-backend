@@ -179,4 +179,4 @@ git clone https://github.com/ferneybaron/cv-manager-backend.git
 ```bash
 http://localhost:8080/cv-manager/swagger-ui/index.html
 ```
-This folder architecture promotes separation of concerns, allowing for a clear distinction between the application's core functionality and the data persistence and external service integration aspects.
+This folder architecture promotes separation of concerns, allowing for a clear distinction between the transport layer responsible for handling external communication, the application's core functionality and the data persistence and external service integration aspects.
